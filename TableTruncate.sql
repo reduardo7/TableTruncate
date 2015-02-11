@@ -1,7 +1,7 @@
 -- =============================================
--- Author:		Flavio Robles & Eduardo Cuomo
+-- Author:	Eduardo Cuomo
 -- Create date:	19/01/2015
--- Description:	Truncate Table para tablas con FK, que no permiten el uso de "TRUNCATE".
+-- Description:	Truncate Table.
 -- =============================================
 CREATE PROCEDURE [dbo].[TableTruncate]
 	@TableName NVARCHAR(128)
@@ -17,7 +17,7 @@ DECLARE @Sql NVARCHAR(MAX) = 'DELETE FROM [' + @TableName + ']'
 EXECUTE sp_executesql @Sql
 
 IF (@@ERROR = 0) BEGIN
-	-- Si NO hay error
+	-- Ok
 	DBCC CHECKIDENT (@TableName, RESEED, 0)
 	
 	DECLARE @NextId NUMERIC = CASE WHEN (IDENT_CURRENT(@TableName) = 1) THEN 1 ELSE 0 END
