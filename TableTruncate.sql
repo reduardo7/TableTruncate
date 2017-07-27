@@ -18,7 +18,6 @@ DECLARE @Sql NVARCHAR(MAX) = 'DELETE FROM [' + @TableName + ']'
 EXECUTE sp_executesql @Sql
 
 IF (@@ERROR = 0) BEGIN
-	-- Si NO hay error
 	DBCC CHECKIDENT (@TableName, RESEED, @NextId)
 	
 	COMMIT TRAN
