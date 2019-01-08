@@ -25,3 +25,5 @@ END ELSE BEGIN
 	-- Error
 	ROLLBACK
 END
+
+-- Note: Ident_Current(@TableName)  Returns 1 When There are no record in table or 1 record. ( if Record Identity is 1)
